@@ -1,0 +1,47 @@
+1. Installer un hyperviseur
+Installer un hyperviseur de votre choix - Pour ma part j'ai pris VirtualBox
+
+2. Configurer une machine virtuelle
+Pour les images Windows, le site https://windowsxlite.com/ propse des images optimisées pour les VM
+l'exemple dans le runbook sera avec une version 22H2 de Windows 10
+
+Les configurations de ma VM sont  les suivantes :
+- 16 go de RAM
+- 4 cores
+- Pour le stockage, puisque nous ferons un snapshot aussitôt que nous aurons installé les outils nécessaires, il n'est pas nécesaire de donner beaucoup d'espace, j'ai mis 50 gb
+- ATTENTION: Pour le réseau, veuillez vous assurez d'avoir sélectionner l'option "NAT" et non "Accès par pont", on ne veut surtout pas que la VM soit sur le même réseau que la NIC de votre hôte
+
+
+Attention, l'étape suivante est avec une image Windows X Lite, si vous prenez une autre image, vous devrez vous débrouiller
+3. Installation Windows et des outils
+- Démarrez la VM et faites l'installation de Windows, cela peut prendre quelques minutes
+- Une fois l'installation complète, il faut installer quelques outils si l'on veut monitorer les connexions externes faites par le gratuiciel
+- Commençons par installer un navigateur, car l'image Lite n'en a pas d'installé par défaut et IE Explorer ne fonctionne plus
+
+
+Pour les outils, ma recommendation est d'y aller uniquement avec TCP View de Microsoft, vous pouvez installer Wireshark(et installer npcap), mais il ne sera pas dans l'exemple
+
+https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview
+Installer ce module PowerShell pour nous permettre de faire des whois https://www.powershellgallery.com/packages/Get-IPInfo/1.0.2
+
+Analyse de Zoom avec TCP View
+
+Pour faire notre exemple, j'ai sélectionné une logiciel qui va évidemment communiquer vers l'internet pour vous illustrer comment identifier les communications Web faites par ce gratuiciel.
+
+Procéder à l'installation de Zoom (je me suis créé un compte avec un email temporaire -voir temp mail) et démarrez l'application comme si vous étiez un véritable utilisateur
+
+Par la suite, identifier les PID et les ProcessName de Zoom, cela peut se faire via PowerShell ou le gestionnaire de tâches (voir capture),
+Enfin, nous ouvrons TCP View et filtrons pour afficher uniquement les process de Zoom que nous voulons voir, voir capture
+
+On peut ensuite voir via PowerShell par exemple à qui appartient l'adresse suivante :
+
+
+
+
+
+
+
+
+
+
+

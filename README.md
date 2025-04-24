@@ -36,7 +36,7 @@ sudo snap install --classic code
 ````
 
 ## Fichier ISO
-Une fois importez, s'assurer au minimum de lui donner les droits en faisant: 
+Une fois importé, s'assurer au minimum de lui donner les droits en faisant: 
 ```
 sudo chmod 777 <NOM_IMAGE>.iso
 ```
